@@ -46,7 +46,7 @@ const SideMenu = ({ activeMenu }) => {
         <div className="cursor-pointer" onClick={handleImageClick}>
           {user?.profileImageUrl ? (
             <img
-              src={user.profileImageUrl}
+              src={user.profileImageUrl?.replace("http://", "https://")}
               alt="Profile"
               className="w-20 h-20 bg-slate-400 rounded-full object-cover"
             />
