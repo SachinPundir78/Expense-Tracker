@@ -104,9 +104,7 @@ const updateProfileImage = async (req, res) => {
 
     // If image is sent
     if (req.file) {
-      const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${
-        req.file.filename
-      }`;
+      const imageUrl = `https://expense-tracker-backend-ly3g.onrender.com/uploads/${req.file.filename}`;
       updateData.profileImageUrl = imageUrl;
     }
 
