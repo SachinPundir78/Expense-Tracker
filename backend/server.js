@@ -9,13 +9,17 @@ const expenseRoutes = require("./routes/expenseRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const app = express();
 
-app.use(cors({
-    origin: process.env.CLIENT_URL || "*",
-    methods: "GET,PUT,POST,DELETE",
-    allowedHeaders: ["Content-Type", "Authorization"],
-   
-  })
-);
+// ✅ CORS options
+const corsOptions = {
+  origin: "https://expense-tracker-frontend-9lwv.onrender.com",
+  methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // optional, only needed if using cookies/auth headers
+};
+
+// ✅ Enable CORS + preflight
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // 🔥 This line handles the CORS preflight!
 
 app.use(express.json());
 
